@@ -15,24 +15,25 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import {useState} from 'react'
+import { useState } from 'react'
 import * as Yup from 'yup'
+//login function
 const Login = () => {
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
 
-  const handleLogin = async() =>{
+  const handleLogin = async () => {
     const validationSchema = Yup.object().shape({
       password: Yup.string().required("Password is required"),
       email: Yup.string().email().required("Email is required"),
     })
 
-    if(!email || !password){
+    if (!email || !password) {
       alert('please fill in all the inputs')
     }
-    try{
-      await validationSchema.validate({email, password})
+    try {
+      await validationSchema.validate({ email, password })
       const user = {
         email: email,
         password: password
@@ -42,12 +43,13 @@ const Login = () => {
       console.log(response.data)
       router.push("/home")
     }
-    catch(err){
-      console.log("the catch error",err)
-      toast.show('invalid credentials', {type: 'error'})
+    catch (err) {
+      console.log("the catch error", err)
+      toast.show('invalid credentials', { type: 'error' })
     }
 
   }
+  //return 
   return (
     <SafeAreaView className="bg-[#3366cc] h-full ">
       <ScrollView
@@ -81,8 +83,8 @@ const Login = () => {
                 color="#b1b6c8"
               />
               <TextInput
-              value={email}
-                onChangeText={(e)=> setEmail(e)}
+                value={email}
+                onChangeText={(e) => setEmail(e)}
                 placeholder="Your Email"
                 className="flex-1 px-3 items-center h-[50px]"
               />
@@ -91,7 +93,7 @@ const Login = () => {
               <MaterialIcons name="lock-outline" size={17} color="#b1b6c8" />
               <TextInput
                 value={password}
-                onChangeText={(e)=> setPassword(e)}
+                onChangeText={(e) => setPassword(e)}
                 placeholder="Password"
                 className="flex-1 px-3 items-center h-[50px]"
               />

@@ -16,25 +16,25 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from "react";
 import axios from "axios"
 import { useToast } from 'react-native-toast-notifications';
-
+//signup
 const Signup = () => {
   const toast = useToast();
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
 
-  const handleSubmit = async() =>{
+  const handleSubmit = async () => {
     const validationSchema = Yup.object().shape({
       fullname: Yup.string().required("Fullname is required"),
       password: Yup.string().required("Password is required"),
       email: Yup.string().email().required("Email is required"),
     })
 
-    if(!fullname || !email || !password){
+    if (!fullname || !email || !password) {
       alert('please fill in all the inputs')
     }
-    try{
-      await validationSchema.validate({fullname, email, password})
+    try {
+      await validationSchema.validate({ fullname, email, password })
       const user = {
         fullname: fullname,
         email: email,
@@ -45,8 +45,8 @@ const Signup = () => {
       console.log(response.data)
       router.push("/home")
     }
-    catch(err){
-      console.log("the catch error",err)
+    catch (err) {
+      console.log("the catch error", err)
     }
 
   }
@@ -79,8 +79,8 @@ const Signup = () => {
             <View className="flex flex-row items-center justify-between border w-full h-[50px] rounded-md border-third overflow-hidden py-4 pl-4">
               <FontAwesome name="user-o" size={24} color="#b1b6c8" />
               <TextInput
-              value={fullname}
-              onChangeText={(e) => setFullName(e)}
+                value={fullname}
+                onChangeText={(e) => setFullName(e)}
                 placeholder="Full Name"
                 className="flex-1 px-3 items-center h-[50px]"
               />
@@ -89,8 +89,8 @@ const Signup = () => {
               {/* <FontAwesome5 name="phone-alt" size={15} color="#b1b6c8" /> */}
               <MaterialIcons name="password" size={15} color="#b1b6c8" />
               <TextInput
-              value={password}
-                onChangeText={(e)=> setPassword(e)}
+                value={password}
+                onChangeText={(e) => setPassword(e)}
                 placeholder=" enter Password"
                 className="flex-1 px-3 items-center h-[50px]"
               />
@@ -102,7 +102,7 @@ const Signup = () => {
                 color="#b1b6c8"
               />
               <TextInput
-              value={email}
+                value={email}
                 onChangeText={(e) => setEmail(e)}
                 placeholder="Your Email"
                 className="flex-1 px-3 items-center h-[50px]"
