@@ -12,10 +12,7 @@ export default function Profile() {
                 <Image source={require('../../assets/images/profile.png')}
                     style={{ width: 200, height: 200, alignSelf: 'center', marginTop: 20 }}
                 />
-                <Text className='text-center text-2xl font-semibold mt-5'>{user?.name}</Text>
-                <Text className='text-center text-base text-gray-500'>
-                    {user?.email}
-                </Text>
+
                 <CustomButton
                     content='Logout'
                     isLoading={loggingOut}

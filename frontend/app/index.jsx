@@ -27,7 +27,8 @@ const App = () => {
                 Ready to make Your Posts?
               </Text>
               <Text className="text-center text-gray-600 leading-5 text-[12px]">
-                Creating Posts and getting comments from people is the best feeling
+              Crafting posts and receiving comments from others is deeply fulfilling, 
+              fostering a vibrant exchange of ideas and emotions that fuels creativity and connection.
               </Text>
               <TouchableOpacity
                 onPress={() => router.push("/signup")}
